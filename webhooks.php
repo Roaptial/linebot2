@@ -19,13 +19,38 @@ if (!is_null($events['events'])) {
 			$text = $event['source']['userId'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
-
-			// Build message to reply back
-			$messages = [
+			if($event['message']['text']=='Menu'){
+				$messages = [
 				'type' => 'text',
 				//'text' => $text
-				'text' => 'กำลังทดสอบข้อความตอบกลับสำหรับ'.$event['message']['text']
-			];
+				'text' => '('.$event['message']['text'].') เมนูตอนนี้มีแค่ A,B'
+				];
+			}else if($event['message']['text']=='A'){
+				$messages = [
+				'type' => 'text',
+				//'text' => $text
+				'text' => '('.$event['message']['text'].') ทดสอบA'
+				];
+			}else if($event['message']['text']=='B'){
+				$messages = [
+				'type' => 'text',
+				//'text' => $text
+				'text' => '('.$event['message']['text'].')  ทดสอบB'
+				];
+			}else {
+				$messages = [
+				'type' => 'text',
+				//'text' => $text
+				'text' => '('.$event['message']['text'].') ยังไม่มีเมนูนี้'
+				];
+			
+			}
+			// Build message to reply back
+			//$messages = [
+			//	'type' => 'text',
+				//'text' => $text
+			//	'text' => 'กำลังทดสอบข้อความตอบกลับสำหรับ'.$event['message']['text']
+			//];
 
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
