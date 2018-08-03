@@ -1,6 +1,7 @@
 <?php
-
-
+$text='';
+if(isset($_GET['sms']))$text=$_GET['sms'];
+if(isset($_POST['sms2']))$text=$_POST['sms2'];
 
 require "vendor/autoload.php";
 
@@ -13,7 +14,7 @@ $pushID = 'U4be233048266e61e25283aa39bb6788d';
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello world');
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text);
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
