@@ -50,14 +50,15 @@ if (!is_null($events['events'])) {
 				'packageId' => '2',
 				'stickerId' => '34'
 				];
-			}else {
+			}
+			/*else {
 				$messages = [
 				'type' => 'text',
 				//'text' => $text
 				'text' => '('.$event['message']['text'].') ยังไม่มีเมนูนี้'
 				];
 			
-			}
+			}*/
 			// Build message to reply back
 			//$messages = [
 			//	'type' => 'text',
@@ -73,7 +74,8 @@ if (!is_null($events['events'])) {
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
 				'replyToken' => $replyToken,
-				'messages' => [$messages2,$messages],
+				//'messages' => [$messages2,$messages],
+				'messages' => [$messages],
 			];
 			$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
