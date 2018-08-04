@@ -43,6 +43,15 @@ if (!is_null($events['events'])) {
 				//'text' => $text
 				'text' => '('.$event['message']['text'].') '.$event['source']['userId']
 				];
+			}else if($event['message']['text']=='สวัสดี'){
+				$messages = [{'type' => 'text',
+				//'text' => $text
+				'text' => 'ดีจ้า'},{
+				'type' => 'sticker',
+				//'text' => $text
+				'packageId' => '2',
+				'stickerId' => '34'}
+				];
 			}else {
 				$messages = [
 				'type' => 'text',
