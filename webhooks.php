@@ -37,6 +37,12 @@ if (!is_null($events['events'])) {
 				//'text' => $text
 				'text' => '('.$event['message']['text'].')  ทดสอบB'
 				];
+			}else if($event['message']['text']=='ID'){
+				$messages = [
+				'type' => 'text',
+				//'text' => $text
+				'text' => '('.$event['message']['text'].') '.$event['source']['userId']
+				];
 			}else {
 				$messages = [
 				'type' => 'text',
